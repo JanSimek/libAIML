@@ -16,6 +16,10 @@ cmake ..
 make
 ```
 
+### Troubleshooting
+
+CMake sets wrong libxml2 include directory for me. If that happens to you too simply run ```cmake -DLIBXML2_INCLUDE_DIR=/usr/include/libxml2/ ..``` from the build directory.
+
 JAVASCRIPT
 ----------
 
