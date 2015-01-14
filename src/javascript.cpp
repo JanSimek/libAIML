@@ -72,8 +72,9 @@ void Print(const v8::FunctionCallbackInfo<v8::Value>& args) {
 bool cJavaScript::init(void) {
 #ifdef ENABLE_JAVASCRIPT
 
-  V8::InitializeICU ( );
-  isolate = Isolate::New ( );
+  //V8::InitializeICU ( )  <- crash when V8 is compiled without icu
+  V8::Initialize();
+  isolate = v8::Isolate::New();
 
 #endif
   return true;
