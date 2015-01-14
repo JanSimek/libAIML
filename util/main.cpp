@@ -21,8 +21,6 @@
 #include <fstream>
 #include <iostream>
 
-#include "../config.h"
-
 #include "std_util.h"
 #include "../src/aiml.h"
 

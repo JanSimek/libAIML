@@ -29,7 +29,7 @@
 #include <list>
 #include <map>
 
-#include "cconfig.h"
+#include "../std_utils/src/cconfig.h"
 #include "aiml.h"
 #include "global.h"
 #include "errors.h"

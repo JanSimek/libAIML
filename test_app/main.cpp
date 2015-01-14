@@ -21,7 +21,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "std_util.h"
+#include "../std_utils/src/std_util.h"
 #include "../src/aiml.h"
 
 using namespace std;

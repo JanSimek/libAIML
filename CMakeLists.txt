@@ -5,7 +5,7 @@ project(libaiml)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 find_package(libXml2 REQUIRED)
-find_package(v8 REQUIRED)
+find_package(V8 REQUIRED)
 
 find_package(PkgConfig)
 #pkg_check_modules(PCRECPP pcrecpp)
@@ -61,6 +61,8 @@ include_directories(
 	${LIBXML2_INCLUDE_DIR}
 	${V8_INCLUDE_DIR}
 )
+
+add_definitions(-DENABLE_AISL=1 -DENABLE_CAIML=1 -DENABLE_JAVASCRIPT=1 -DENABLE_PCRECPP=1 -DVERSION="0.1")
 
 target_link_libraries(aiml ${LIBXML2_LIBRARIES})
 

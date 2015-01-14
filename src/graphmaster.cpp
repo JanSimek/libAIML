@@ -22,8 +22,7 @@
 #include <stack>
 #include <algorithm>
 
-#include "std_util.h"
-#include "config.h"
+#include "../std_utils/src/std_util.h"
 #include "core.h"
 
 #ifdef ENABLE_PCRECPP

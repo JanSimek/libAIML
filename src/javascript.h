@@ -22,7 +22,6 @@
 #define __LIBAIML_SUBENGINE_JAVASCRIPT_H__
 
 #include <string>
-#include <config.h>
 
 #ifdef ENABLE_JAVASCRIPT
 #define XP_UNIX

@@ -22,7 +22,7 @@
 #include <string>
 #include <libxml/tree.h>
 
-#include "std_util.h"
+#include "../std_utils/src/std_util.h"
 #include "core.h"
 using namespace std;
 using namespace stdu;

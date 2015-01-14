@@ -20,7 +20,6 @@
 
 #include <sstream>
 #include "javascript.h"
-#include "config.h"
 #include "global.h"
 
 #ifdef ENABLE_JAVASCRIPT

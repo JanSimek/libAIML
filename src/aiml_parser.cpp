@@ -21,7 +21,7 @@
 #include <libxml/parserInternals.h>
 #include <string.h>
 
-#include "std_util.h"
+#include "../std_utils/src/std_util.h"
 #include "core.h"
 
 using namespace std;

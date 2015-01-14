@@ -21,9 +21,8 @@
 #include <fstream>
 #include <glob.h>
 
-#include "std_util.h"
+#include "../std_utils/src/std_util.h"
 #include "core.h"
-#include "config.h"
 
 using namespace std;
 using namespace aiml;
