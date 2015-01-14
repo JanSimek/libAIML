@@ -1,56 +1,32 @@
-AIML
+libAIML
 =======
 
-libAIML by Varol Okan:
-=======================
+Fork of Varol Okan's libAIML which itself is a fork of the original [C++ AIML parser from V01D](doc/markdown/history.md).
 
-This repository continues the work of the C++ AIML parser from V01D.<br>
-It is based off of version 0.6.1 of libaiml.<br>
-I also include the source of std_utils-0.7.5 in here to make it easier to compile the code<p>
+I also include the source of std_utils-0.7.5 in here to make it easier to compile the code
 
-BUILD:
-======
+COMPILE AND RUN
+---------------
 
-./rebuild.sh
+You need [CMake](http://www.cmake.org) to build this program. 
 
-This script will do the following<br>
-  cd std_utils<br>
-  ./configure <br>
-  cd ..<br>
-<br>
-  autoreconf -i<br>
-  ./configure --enable-caiml --enable-pcrecpp --enable-javascript --with-v8-path=/path/to/v8 <br>
-  make<br>
-
-
-Note: --enable-javascript: You need to make sure that the library files are either in the search path ( I.e. ise LDFLAGS, and LIBS ) or you can specify the path to v8's top source directory with --with-v8-path=/path/to/v8/
-Please let me know if you run into issues with the libs. You can modify configure.in and run autoconf afterwards and try again ./configure ...
-
-
-RUN:
-====
-
-This should build std_util, libaiml, and the test_app.<p>
-
-cd test_app<br>
-cp libaiml.xml.dist libaiml.xml<br>
-./test_app<p>
-
-Once you have grown tired of chatting you can simply type
-
-quit
-
+```bash
+mkdir build && cd build
+cmake ..
+make
+```
 
 JAVASCRIPT
-==========
+----------
 
-JavaScript is handled natively through v8. <br>
-Please follow the instructions on https://developers.google.com/v8/build to build the libraries.<p>
+JavaScript is handled natively through [V8 JavaScript Engine](https://developers.google.com/v8/build). Please follow their instructions to build the libraries.
 
-Since JS is not well specified in the AIML spec, I added test_app/aiml/TestJavaScript.aiml file to deonstrate how to use it with libAIML.<br>
-Note that the CDATA construct is required for libxml2 to properly read in the JS code.<p>
+Since JS is not well specified in the AIML spec, I added [TestJavaScript.aiml](test_app/aiml/TestJavaScript.aiml) file to demonstrate how to use it with libAIML.
+
+Note that the CDATA construct is required for libxml2 to properly read in the JS code.
 
 Also please note that you will have access to the aiml - object in JavaScript. 
+
 ```JAVASCRIPT
   var aiml = { 
     user : "name",
@@ -63,10 +39,13 @@ Also please note that you will have access to the aiml - object in JavaScript.
   }
 ```
 
-to test the JS categories you can enter <br>
-You: test something<br>
-or<br>
-You: test aiml<p>
+To test the JS categories you can enter:
+
+```
+You: test something
+or
+You: test aiml
+```
 
 ```xml
 <category>
