@@ -26,30 +26,27 @@ add_executable(test_app
 )
 
 add_library(aiml 
-	src/aiml.cpp            
-	src/aisl_parser.cpp     
-	src/config_parser.cpp   
-	src/errors.cpp          
-	src/graphmaster.h       
-	src/serializer.h        
-	src/user.h
-	src/aiml.h              
-	src/aisl_parser.h       
-	src/config_parser.h     
+        src/aiml.cpp
+        src/aiml.h
+        src/aiml_parser.cpp
+        src/aiml_parser.h
+        src/template_parser.cpp
+        src/config_parser.cpp
+        src/config_parser.h
+        src/errors.cpp
         src/errors.h
-	src/stuff.cpp           
-	src/user_manager.cpp
-	src/aiml_parser.cpp     
-	src/caiml_parser.cpp    
-	src/core.cpp            
+        src/graphmaster.cpp
+        src/graphmaster.h
+        src/serializer.cpp
+        src/serializer.h
+        src/user.cpp
+        src/user.h
+        src/user_manager.cpp
+        src/user_manager.h
+        src/core.cpp
+        src/core.h
         src/global.h
-	src/template_parser.cpp src/user_manager.h
-	src/aiml_parser.h       
-	src/caiml_parser.h      
-	src/core.h              
-	src/graphmaster.cpp     
-	src/serializer.cpp      
-	src/user.cpp
+        src/stuff.cpp
 )
 
 include_directories(
@@ -58,7 +55,7 @@ include_directories(
         ${LIBXML2_INCLUDE_DIRS}
 )
 
-add_definitions(-DENABLE_AISL=1 -DENABLE_CAIML=1 -DENABLE_PCRECPP=1 -DVERSION="0.1")
+add_definitions(-DENABLE_PCRECPP=1 -DVERSION="0.1")
 
 target_link_libraries(aiml ${LIBXML2_LIBRARIES})
 

@@ -37,8 +37,6 @@
 #include "serializer.h"
 #include "graphmaster.h"
 #include "aiml_parser.h"
-#include "aisl_parser.h"
-#include "caiml_parser.h"
 #include "user_manager.h"
 #include "config_parser.h"
 
@@ -59,11 +57,8 @@ namespace aiml {
 
       bool learnFile ( const std::string& filename);
 
-      bool loadFileType ( const std::string &, enType );
-      bool saveFileType ( const std::string &, enType );
-
-      bool saveGraphmaster ( const std::string & );
-      bool loadGraphmaster ( const std::string & );
+      bool loadFileType ( const std::string & );
+      bool saveFileType ( const std::string & );
 
       std::string getErrorStr(AIMLError error_num);
       std::string getRuntimeErrorStr(void);
@@ -89,8 +84,6 @@ namespace aiml {
       /** Internal modules **/
       cGraphMaster graphmaster;
       AIMLparser   aiml_parser;
-      AISLparser   aisl_parser;
-      CAIMLparser caiml_parser;
 
       /** Configuration options/vars **/
       cConfigParser cfg_parser;

@@ -50,20 +50,6 @@ namespace aiml {
     AIMLERR_AIML_NOOPEN,              /**< Couldn't open aiml file. */
     AIMLERR_AIML_PARSE,               /**< AIML Parser error (use cInterpreter::getRuntimeErrorStr()). */
 
-    // caiml parser errors
-    AIMLERR_CAIML_NOMAGIC,            /**< Couldn't retrieve magic number from caiml file. */
-    AIMLERR_CAIML_NOTCAIML,           /**< Not a CAIML file. */
-    AIMLERR_CAIML_NOOPEN_READ,        /**< Couldn't open CAIML file for reading. */
-    AIMLERR_CAIML_NOVERSION,          /**< Couldn't get version from CAIML file. */
-    AIMLERR_CAIML_WRONGVERSION,       /**< CAIML file version not supported. */
-    AIMLERR_CAIML_NOSIZE,             /**< Couldn't get size of graphmaster (ie: number of templates) from CAIML file. */
-    AIMLERR_CAIML_NOCHILDSNUM,        /**< No size of childs for node in CAIML file. */
-    AIMLERR_CAIML_NOKEY,              /**< Coulnd't read key for node in CAIML file. */
-    AIMLERR_CAIML_NOTEMPLATE,         /**< Coulnd't read template for node in CAIML file. */
-    AIMLERR_CAIML_EMPTYGM,            /**< Can't save an empty graphmaster. */
-    AIMLERR_CAIML_NOOPEN_WRITE,       /**< Couldn't open CAIML file for writing. */
-    AIMLERR_CAIML_INCORRECTSTRUCT,    /**< Caiml file is not correctly built. */
-
     // template parser errors
     AIMLERR_TEMLP_UNKNOWN_TAG,        /**< Unknown tag found while parsing template. */
 

@@ -78,7 +78,6 @@ namespace aiml {
    */
   class cInterpreter {
     public:
-      enum enType { TYPE_AIML, TYPE_CAIML, TYPE_AISL };
       /** Initializes everything. */
       cInterpreter(void);
 
@@ -140,35 +139,17 @@ namespace aiml {
       /**
        * loads an file into the graphmaster.
        * \param filename is the path (relative to client program) of the aiml file to load.
-       * \param type can be any of TYPE_AIML, TYPE_AISL, or TYPE_CAIML
        * \returns if it was successful.
        */
-      virtual bool loadFileType ( const std::string &, enType ) = 0;
+      virtual bool loadFileType ( const std::string &filename ) = 0;
 
       /**
        * saves the graphmaster to a file
        * \param filename is the path (relative to client program) of the aiml file to save.
-       * \param type can be any of TYPE_AIML, TYPE_AISL, or TYPE_CAIML
        * \returns if it was successful.
        */
-      virtual bool saveFileType ( const std::string &, enType ) = 0;
+      virtual bool saveFileType ( const std::string &filename ) = 0;
 
-      /**
-       * Saves currently loaded graphmaster into a .caiml file.
-       * \param file is the name of the file.
-       * \returns if saving was succesful.
-       */
-      virtual bool saveGraphmaster(const std::string& file) = 0;
-
-      /**
-       * Loads a previously saved .caiml file into the core.
-       * This functions replaces the content of the graphmaster completely, so
-       * if you want to mix aiml files and ONE .caiml file (more wouldn't make sense),
-       * you should load all .aiml files first.
-       * \param file is the name of the file.
-       * \returns if loading was succesful.
-       */
-      virtual bool loadGraphmaster(const std::string& file) = 0;
 
       /** Get the last error set. */
       AIMLError getError(void);

@@ -32,8 +32,6 @@ using std_util::operator<<;
 cCore::cCore(void) :
           graphmaster(file_gossip_stream, last_error, *this),
           aiml_parser(graphmaster, last_error),
-          aisl_parser(graphmaster, last_error),
-          caiml_parser(graphmaster, last_error),
           cfg_parser(*this),
           cfg(std_util::cConfig::ERRLEV_QUIET), user_manager(*this), initialized(false)
 { }
@@ -75,50 +73,12 @@ bool cCore::learnFile(const std::string& filename) {
   return learn_file(filename, true);
 }
 
-bool cCore::loadFileType ( const std::string &filename, enType type )  {
-  switch ( type )  {
-#ifdef ENABLE_CAIML
-    case TYPE_CAIML: return caiml_parser.load ( filename );
-#endif
-#ifdef ENABLE_CAIML
-    case TYPE_AISL:  return aisl_parser.load  ( filename );
-#endif
-    case TYPE_AIML:
-    default: return aiml_parser.parse ( filename, false, false ); //cfg_options.should_trim_blanks, at_runtime);
-  }
-  return false;
+bool cCore::loadFileType ( const std::string &filename )  {
+  return aiml_parser.parse ( filename, false, false ); //cfg_options.should_trim_blanks, at_runtime);
 }
 
-bool cCore::saveFileType ( const std::string &filename, enType type )  {
-  switch ( type )  {
-#ifdef ENABLE_CAIML
-    case TYPE_CAIML: return caiml_parser.save ( filename );
-#endif
-#ifdef ENABLE_AISL
-    case TYPE_AISL:  return aisl_parser.save  ( filename );
-#endif
-    case TYPE_AIML:
-    default: return aiml_parser.save ( filename );
-  }
-  return false;
-}
-
-bool cCore::saveGraphmaster(const std::string& file) {
-#ifdef ENABLE_CAIML
-  if (!initialized) { set_error(AIMLERR_NOT_INIT); return false; }
-  return caiml_parser.save(file);
-#else
-  return false;
-#endif
-}
-
-bool cCore::loadGraphmaster(const std::string& file) {
-#ifdef ENABLE_CAIML
-  if (!initialized) { set_error(AIMLERR_NOT_INIT); return false; }
-  return caiml_parser.load(file);
-#else
-  return false;
-#endif
+bool cCore::saveFileType ( const std::string &filename )  {
+    return aiml_parser.save ( filename );
 }
 
 bool cCore::respond(const std::string& input, const std::string& username, std::string& output, std::list<cMatchLog>* log) {

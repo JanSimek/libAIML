@@ -43,15 +43,6 @@ std::string cCore::error_str[AIMLERR_MAX] = {
   "Couldn't open aiml file",
   "AIML parser error",
 
-  // caiml parser errors
-  "Couldn't read magic number from caiml file", "File was not a caiml file (magic number mismatch)",
-  "Couldn't open caiml file for reading", "No caiml version found in file",
-  "Unsupported/Incorrect caiml version", "No graphmaster size in caiml file",
-  "No size of childs for node in caiml file", "No key for node in caiml file",
-  "No template for node in caiml file", "Can't save an empty graphmaster",
-  "Couldn't open caiml file for writing",
-  "Caiml file is not correctly built",
-
   // template parser errors
   "Unknown tag found while parsing template",
 
