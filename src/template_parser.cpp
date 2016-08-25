@@ -338,7 +338,6 @@ bool cGraphMaster::readTemplate(cReadBuffer& templ, const StarsHolder& sh, cUser
 
       // scripted languages
       case TEMPL_SYSTEM:
-      case TEMPL_JAVASCRIPT:
       {
         string chardata;
         size_t old_size = templ.limitSize(len - chars_read_tag);
@@ -346,11 +345,7 @@ bool cGraphMaster::readTemplate(cReadBuffer& templ, const StarsHolder& sh, cUser
         templ.restoreSize(old_size);
 
         string ret;
-        bool call_ret = false;
-        if ( int_type == TEMPL_SYSTEM )
-          call_ret = aiml_core.doSystemCall ( chardata, ret );
-        else
-          call_ret = aiml_core.doJavaScriptCall ( chardata, ret, sh, user );
+        bool call_ret = call_ret = aiml_core.doSystemCall ( chardata, ret );
         if (!call_ret) return false;
         templ_str += ret;
       }

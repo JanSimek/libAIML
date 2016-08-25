@@ -146,7 +146,6 @@ void cConfigParser::parseSubstitutionsEntry(xmlNode* list, cGraphMaster::SubsTyp
 void cConfigParser::parseOptions(xmlNode* list) {
   core.cfg_options.should_trim_blanks = false;
   core.cfg_options.allow_dateformat = false;
-  core.cfg_options.allow_javascript = false;
   core.cfg_options.allow_system = false;
   
   for (xmlNode* node = list; node; node = node->next) {
@@ -184,8 +183,7 @@ void cConfigParser::parseOptions(xmlNode* list) {
       for (xmlNode* sub_node = node->children; sub_node; sub_node = sub_node->next) {
         if (sub_node->type != XML_ELEMENT_NODE) continue;
         elem_name = INV_BAD_CAST(sub_node->name);
-        if (elem_name == "javascript") core.cfg_options.allow_javascript = true;
-        else if (elem_name == "system") core.cfg_options.allow_system = true;
+        if (elem_name == "system") core.cfg_options.allow_system = true;
         else if (elem_name == "dateformat") core.cfg_options.allow_dateformat = true;
       }
     }

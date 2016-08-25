@@ -41,7 +41,6 @@
 #include "caiml_parser.h"
 #include "user_manager.h"
 #include "config_parser.h"
-#include "javascript.h"
 
 namespace aiml {
   class cCore : public cInterpreter {
@@ -83,10 +82,6 @@ namespace aiml {
       bool learn_file(const std::string& filename, bool at_runtime = false);
 
       bool doSystemCall(const std::string& cmd, std::string& ret);
-
-      /** java script **/
-      bool doJavaScriptCall ( const std::string &, std::string &, const StarsHolder &, cUser & );
-      cJavaScript javascript_interpreter;
 
       const std::string& getBotVar(const std::string& key) const;
       StringMAP botvars_map;

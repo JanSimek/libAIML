@@ -33,8 +33,6 @@ std::string cCore::error_str[AIMLERR_MAX] = {
 
   // sub-engines' errors
   "System tag is not allowed to be executed",
-  "Javascript tag is not allowed to be executed",
-  "Problem with JavaScript interpreter",
 
   // graphmaster errors
   "Normalization on input resulted in empty string",
@@ -72,6 +70,5 @@ std::string cCore::getRuntimeErrorStr(void) {
   if (last_error == AIMLERR_NO_CFGFILE) return cfg_parser.getRuntimeError();
   else if (last_error == AIMLERR_AIML_PARSE) return aiml_parser.getRuntimeError();
   else if (last_error == AIMLERR_NO_USERLIST) return user_manager.getRuntimeError();
-  else if (last_error == AIMLERR_JAVASCRIPT_PROBLEM) return javascript_interpreter.getRuntimeError();
   else return std::string();
 }

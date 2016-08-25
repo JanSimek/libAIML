@@ -162,13 +162,6 @@ bool cCore::applyConfigOptions(void) {
 
   if (!user_manager.load(cfg_options.user_file)) { set_error(AIMLERR_NO_USERLIST); return false; }
 
-  if (cfg_options.allow_javascript) {
-    if (!javascript_interpreter.init()) {
-      if (last_error == AIMLERR_NO_ERR) set_error(AIMLERR_JAVASCRIPT_PROBLEM);
-      return false;
-    }
-  }
-
   if (!load_aiml_files()) { return false; }
   graphmaster.sort_all();
 
@@ -252,20 +245,6 @@ bool cCore::doSystemCall(const string& cmd, string& out) {
   }
 
   return true;
-}
-
-bool cCore::doJavaScriptCall(const std::string& cmd, std::string& ret, const StarsHolder &sh, cUser &user )
-{
-  if (!cfg_options.allow_javascript) {
-    set_error(AIMLERR_JAVASCRIPT_NOT_ALLOWED);
-    return false;
-  }
-  else {
-    javascript_interpreter.set_variables ( sh, user );
-    bool success = javascript_interpreter.eval(cmd, ret);
-    if (!success) last_error = AIMLERR_JAVASCRIPT_PROBLEM;
-    return success;
-  }
 }
 
 /**

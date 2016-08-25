@@ -357,12 +357,6 @@ void AIMLparser::startElement(const std::string& name, const list<string>& attr_
     else if (name == "think")      { binary_pos += templ.writeNumber(TEMPL_THINK); }
     else if (name == "learn")      { binary_pos += templ.writeNumber(TEMPL_LEARN); }
     else if (name == "system")     { binary_pos += templ.writeNumber(TEMPL_SYSTEM); verbatim = true; }
-    else if (name == "javascript") {
-      //xml_context->disableSAX = 1; //ignore_chardata = true;
-      xml_context->instate = XML_PARSER_CDATA_SECTION;
-      binary_pos += templ.writeNumber(TEMPL_JAVASCRIPT);
-      verbatim = true;
-    }
 
     /*** Possible shortcuts: for now they aren't, if they are shortcuts this ids will be changed later ***/
     else if (name == "person") { binary_pos += templ.writeNumber(TEMPL_PERSON); }
@@ -423,7 +417,7 @@ void AIMLparser::endElement(const std::string& name) {
       level = LEVEL_OTHER;
     }
     else {
-      if (name == "system" || name == "javascript") {
+      if (name == "system") {
         //xml_context->disableSAX = 0;
         xml_context->instate = XML_PARSER_CONTENT;
         verbatim = false;

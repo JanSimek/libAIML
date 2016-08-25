@@ -40,8 +40,6 @@ namespace aiml {
 
     // sub-engines' errors
     AIMLERR_SYSTEM_NOT_ALLOWED,       /**< System tag is not allowed to be executed. */
-    AIMLERR_JAVASCRIPT_NOT_ALLOWED,   /**< Javascript tag is not allowed to be executed. */
-    AIMLERR_JAVASCRIPT_PROBLEM,       /**< Problem with JavaScript interpreter (use cInterpreter::getRuntimeErrorStr()). */
 
     // graphmaster errors
     AIMLERR_EMPTY_INPUT,              /**< Normalization of input resulted in empty string. */

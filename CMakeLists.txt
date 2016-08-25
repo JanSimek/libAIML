@@ -5,7 +5,6 @@ project(libaiml)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 find_package(libXml2 REQUIRED)
-find_package(V8 REQUIRED)
 
 find_package(PkgConfig)
 #pkg_check_modules(PCRECPP pcrecpp)
@@ -37,15 +36,13 @@ add_library(aiml
 	src/aiml.h              
 	src/aisl_parser.h       
 	src/config_parser.h     
-	src/errors.h            
-	src/javascript.cpp      
+        src/errors.h
 	src/stuff.cpp           
 	src/user_manager.cpp
 	src/aiml_parser.cpp     
 	src/caiml_parser.cpp    
 	src/core.cpp            
-	src/global.h            
-	src/javascript.h        
+        src/global.h
 	src/template_parser.cpp src/user_manager.h
 	src/aiml_parser.h       
 	src/caiml_parser.h      
@@ -58,12 +55,11 @@ add_library(aiml
 include_directories(
 	${CMAKE_SOURCE_DIR}/src/std_utils
 	${PCRECPP_INCLUDE_DIR}
-	${LIBXML2_INCLUDE_DIR}
-	${V8_INCLUDE_DIR}
+        ${LIBXML2_INCLUDE_DIRS}
 )
 
-add_definitions(-DENABLE_AISL=1 -DENABLE_CAIML=1 -DENABLE_JAVASCRIPT=1 -DENABLE_PCRECPP=1 -DVERSION="0.1")
+add_definitions(-DENABLE_AISL=1 -DENABLE_CAIML=1 -DENABLE_PCRECPP=1 -DVERSION="0.1")
 
 target_link_libraries(aiml ${LIBXML2_LIBRARIES})
 
-target_link_libraries(test_app aiml ${V8_LIBRARY} std_utils ${PCRECPP_LIBRARY})
+target_link_libraries(test_app aiml std_utils ${PCRECPP_LIBRARY})
