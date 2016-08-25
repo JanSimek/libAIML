@@ -77,7 +77,12 @@ bool cWriteBuffer::readFromFile(std::istream& file) {
   if (len == 0) return false;
 
   data.resize(len);
-  return file.read(&data[0], len);
+  if(file.read(&data[0], len))
+  {
+      return true;
+  } else {
+      return false;
+  }
 }
 
 size_t cWriteBuffer::seek(size_t new_pos, size_t offset) {
@@ -189,12 +194,25 @@ void cReadBuffer::restoreSize(size_t _size) {
  */
 bool aiml::writeNumber(ostream& file, size_t n) {
   size_t n2 = htonl(n);
-  return file.write(reinterpret_cast<const char*>(&n2), sizeof(size_t));
+
+  if(file.write(reinterpret_cast<const char*>(&n2), sizeof(size_t)))
+  {
+      return true;
+  } else {
+      return false;
+  }
 }
 
 bool aiml::writeString(ostream& file, const string& s) {
   if (!aiml::writeNumber(file, s.length())) return false;
-  return file.write(s.c_str(), s.length());
+  if(file.write(s.c_str(), s.length()))
+  {
+      return true;
+  }
+  else
+  {
+      return false;
+  }
 }
 
 
@@ -208,15 +226,20 @@ bool aiml::readNumber(istream& file, size_t& num) {
 }
 
 bool aiml::readString(istream& file, string& out) {
+  bool ret = false;
   size_t len;
   if (!aiml::readNumber(file, len)) { _DBG_CODE(msg_dbg() << "couldn't read string length" << endl); return false; }
   if (len == 0) { _DBG_CODE(msg_dbg() << "string of size 0" << endl); return false; }
 
   char* buf = new char[len+1];
-  bool ret = file.read(buf, len);
+  file.read(buf, len);
   buf[len] = '\0';
   
-  if (ret) { out = buf; }
+  if (file)
+  {
+      out = buf;
+      ret = true;
+  }
   delete buf;
   
   return ret;
